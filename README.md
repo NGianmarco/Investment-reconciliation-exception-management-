@@ -75,7 +75,7 @@ The workflow is designed to identify and organize reconciliation discrepancies s
 Exceptions can then be categorized and analyzed rather than requiring analysts to manually review the full transaction population.
 
 ## Power BI Reporting Layer
-
+![Power BI Reconciliation Dashboard](IMG_4553.png)
 The Power BI layer provides a consolidated view of reconciliation results and exception activity.
 
 The reporting layer is designed to help users:
