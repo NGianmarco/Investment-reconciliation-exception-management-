@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project demonstrates an exception-based investment reconciliation workflow designed to identify, classify, and prioritize reconciliation breaks between internal accounting records and external custodian data.
+This project begins with two independent transaction populations: internally sourced investment accounting records and an external custodian data feed. The raw datasets are standardized and mapped to a common reconciliation structure so corresponding transaction attributes can be compared consistently. The reconciliation process then identifies differences, calculates variances, classifies exceptions, and converts those exceptions into an operational work queue.
 
 Rather than requiring an analyst to manually review an entire population of transactions, the workflow separates successfully reconciled records from exceptions so operational attention can be focused on items requiring investigation.
 
@@ -88,7 +88,7 @@ The complete source dataset is also available in [`internal_books.csv`](internal
 
 ### 2. Custodian Records
 
-The custodian dataset represents the corresponding transaction population received from the external custodian. It contains the same core reconciliation attributes, allowing the two datasets to be compared systematically.
+The custodian dataset represents the external transaction feed used as the independent source for reconciliation. Because custodian and internally sourced data may use different field structures, naming conventions, and transaction representations, the two raw datasets were standardized and mapped to a common set of reconciliation attributes. This alignment allows corresponding fields—such as account, CUSIP, transaction type, currency, pay date, quantity/face value, and cash amount—to be compared consistently at the transaction level.
 
 ![Custodian Records](IMG_4912.jpeg)
 
