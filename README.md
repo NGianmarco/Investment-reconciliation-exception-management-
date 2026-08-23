@@ -74,6 +74,32 @@ The workflow is designed to identify and organize reconciliation discrepancies s
 
 Exceptions can then be categorized and analyzed rather than requiring analysts to manually review the full transaction population.
 
+## Reconciliation & Exception Management Output
+
+The Excel workflow provides the operational layer underneath the Power BI dashboard. These views demonstrate how transaction-level internal and custodian data is transformed into a categorized and actionable exception population.
+
+### Transaction-Level Reconciliation Detail
+
+![Transaction-Level Reconciliation Detail](IMG_4806.jpg)
+
+Each exception retains the transaction-level attributes required for investigation, including exception and transaction IDs, account, CUSIP, security, asset type, currency, internal and custodian transaction types, and relevant processing dates.
+
+### Internal vs. Custodian Comparison & Exception Classification
+
+![Internal vs. Custodian Comparison and Exception Classification](IMG_4807.jpg)
+
+The reconciliation logic compares internal and custodian records, calculates quantity/face and cash variances, and applies exception categories so breaks can be routed for investigation.
+
+### Exception Work Queue
+
+![Exception Work Queue](IMG_4805.jpg)
+
+The exception work queue converts identified reconciliation breaks into an operational workflow by assigning priority and tracking exception age, ownership, status, resolution reason, last update, and supporting comments.
+
+Together, these views demonstrate the progression from transaction-level reconciliation, to exception identification and classification, to an operational work queue for investigation and resolution.
+
+---
+
 ## Power BI Reporting Layer
 ![Power BI Reconciliation Dashboard](IMG_4553.png)
 The Power BI layer provides a consolidated view of reconciliation results and exception activity.
