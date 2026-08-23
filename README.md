@@ -74,29 +74,55 @@ The workflow is designed to identify and organize reconciliation discrepancies s
 
 Exceptions can then be categorized and analyzed rather than requiring analysts to manually review the full transaction population.
 
-## Reconciliation & Exception Management Output
+## Reconciliation Workflow: Source Data to Exception Management
 
-The Excel workflow provides the operational layer underneath the Power BI dashboard. These views demonstrate how transaction-level internal and custodian data is transformed into a categorized and actionable exception population.
+This project begins with two independent transaction populations: internally maintained investment accounting records and custodian records. The reconciliation process compares these datasets at the transaction level, identifies differences, calculates variances, classifies exceptions, and converts those exceptions into an operational work queue.
 
-### Transaction-Level Reconciliation Detail
+### 1. Internal Books
 
-![Transaction-Level Reconciliation Detail](IMG_4806.jpg)
+The internal dataset represents the transaction records maintained within the investment accounting environment. Each record contains the attributes required for reconciliation, including transaction ID, account, CUSIP, security, asset type, transaction type, currency, pay date, quantity/face value, and cash amount.
 
-Each exception retains the transaction-level attributes required for investigation, including exception and transaction IDs, account, CUSIP, security, asset type, currency, internal and custodian transaction types, and relevant processing dates.
+![Internal Books](IMG_4913.jpeg)
 
-### Internal vs. Custodian Comparison & Exception Classification
+The complete source dataset is also available in [`internal_books.csv`](internal_books.csv).
 
-![Internal vs. Custodian Comparison and Exception Classification](IMG_4807.jpg)
+### 2. Custodian Records
 
-The reconciliation logic compares internal and custodian records, calculates quantity/face and cash variances, and applies exception categories so breaks can be routed for investigation.
+The custodian dataset represents the corresponding transaction population received from the external custodian. It contains the same core reconciliation attributes, allowing the two datasets to be compared systematically.
 
-### Exception Work Queue
+![Custodian Records](IMG_4912.jpeg)
 
-![Exception Work Queue](IMG_4805.jpg)
+The complete source dataset is also available in [`custodian_records.csv`](custodian_records.csv).
 
-The exception work queue converts identified reconciliation breaks into an operational workflow by assigning priority and tracking exception age, ownership, status, resolution reason, last update, and supporting comments.
+### 3. Reconciliation & Exception Output
 
-Together, these views demonstrate the progression from transaction-level reconciliation, to exception identification and classification, to an operational work queue for investigation and resolution.
+The reconciliation process compares the internal and custodian populations and produces a unified transaction-level result. Rather than requiring an analyst to manually compare the two source files, the workflow surfaces the relevant differences and organizes them for investigation.
+
+The following three screenshots show the reconciliation output from left to right across the Excel work queue.
+
+#### Transaction Identification & Security Details
+
+![Reconciliation Output - Transaction Identification](IMG_4806.jpg)
+
+The first section preserves the identifying attributes needed to investigate each exception, including exception ID, transaction ID, account, CUSIP, security, asset type, currency, and the internal and custodian transaction types.
+
+#### Internal vs. Custodian Comparison & Exception Classification
+
+![Reconciliation Output - Comparison and Classification](IMG_4807.jpg)
+
+The second section places internal and custodian values side by side, calculates quantity/face and cash variances, and assigns an exception category and priority. This converts raw reconciliation differences into identifiable break types that can be investigated systematically.
+
+#### Exception Management & Resolution Tracking
+
+![Reconciliation Output - Exception Management](IMG_4805.jpg)
+
+The final section converts identified breaks into an operational exception-management workflow. Each exception includes its category, priority, detected date, age, owner, status, resolution reason, last update, and supporting comments.
+
+Together, these views demonstrate the full operational progression:
+
+**Internal Books → Custodian Records → Transaction Matching → Variance Detection → Exception Classification → Prioritization → Investigation & Resolution**
+
+The resulting exception population then feeds the reporting layer below, where Power BI provides management-level visibility into reconciliation performance, outstanding exceptions, aging, financial exposure, and exception trends.
 
 ---
 
